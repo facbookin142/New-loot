@@ -1,89 +1,44 @@
-<!doctype html>
-
+<!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>WhatsApp Quick Links — Flight-aware</title>
-  <style>
-    body{font-family:Inter,system-ui,Arial;padding:18px;background:#0f1720;color:#e6edf3}
-    .card{max-width:720px;margin:12px auto;background:#0b1220;padding:16px;border-radius:12px}
-    h1{margin:0 0 8px;font-size:18px}
-    p{margin:0 0 12px;color:#9ca3af}
-    .controls{display:flex;gap:12px;align-items:center;margin-bottom:12px}
-    .switch{display:flex;gap:8px;align-items:center}
-    .switch input{width:40px;height:20px}
-    ul{list-style:none;padding:0;margin:0}
-    li{margin:6px 0}
-    a{display:inline-block;padding:10px 12px;border-radius:8px;text-decoration:none;background:#25D366;color:#062014}
-    .muted{color:#9ca3af;font-size:13px}
-  </style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>WhatsApp Random Redirect</title>
+    <script>
+        // Base64 encoded numbers
+        const numbers = [
+            "OTE4OTg1Nzk5OA==", // +91 89898 57998
+            "OTE5MDAzMzE1MTcy", // +91 90033 15172
+            "OTE3NDE5MTg2NjQz", // +91 74191 86643
+            "OTE5NjU0NDg2ODMy", // +91 96544 86832
+            "OTE5Nzg0MDc2NTI1", // +91 97840 76525
+            "OTE5NjE3NzQ5MzY2", // +91 96177 49366
+            "OTE5MTcyNjMwNTAy", // +91 91726 30502
+            "OTE5NjAyNDU5MDc5", // +91 96024 59079
+            "OTE5Mjg0MTM2NjUz", // +91 92841 36653
+            "OTE4NDQ2OTE3NjAy", // +91 84469 17602
+            "OTE4OTg1NzYzOQ==", // +91 89898 57639
+            "OTE4ODI3ODU2MzA5", // +91 88278 56309
+            "OTE3MzExMTM1Mjk0", // +91 73111 35294
+            "OTE5MzAyNjQwMzc0"  // +91 93026 40374
+        ];
+
+        function decodeNumber(encoded) {
+            return atob(encoded);
+        }
+
+        function randomNumber() {
+            const index = Math.floor(Math.random() * numbers.length);
+            return decodeNumber(numbers[index]);
+        }
+
+        // Redirect to random number each time page loads
+        window.onload = function() {
+            const number = randomNumber();
+            window.location.href = `https://wa.me/${number}`;
+        };
+    </script>
 </head>
 <body>
-  <div class="card">
-    <h1>WhatsApp Quick Links</h1>
-    <p>Browser will switch numbers automatically when you go offline (e.g. airplane mode). You can also use the manual toggle.</p><div class="controls">
-  <label class="switch">
-    <input type="checkbox" id="manualToggle">
-    <span class="muted">Manual Flight Mode</span>
-  </label>
-  <div class="muted" id="status">Status: <strong id="stText">Online</strong></div>
-</div>
-
-<ul id="list"></ul>
-
-  </div>  <script>
-    // two sets of numbers
-    const normal = ['918989857998','919003315172','917419186643','919654486832','919784076525','919617749366','919172630502','919602459079','919284136653','918446917602','918989857639','918827856309','917311135294','919302640374'];
-    const flight = ['919876543210','919812345678','919700000001']; // example alternate numbers when flight-mode
-
-    const listEl = document.getElementById('list');
-    const statusText = document.getElementById('stText');
-    const manualToggle = document.getElementById('manualToggle');
-
-    // helper to render numbers
-    function render(arr){
-      listEl.innerHTML = '';
-      arr.forEach(n=>{
-        const li=document.createElement('li');
-        const a=document.createElement('a');
-        a.href=`https://wa.me/${n}`;
-        a.textContent = format(n);
-        a.target='_blank';
-        li.appendChild(a);
-        listEl.appendChild(li);
-      });
-    }
-
-    function format(num){
-      if(num.length===12) return '+'+num.slice(0,2)+' '+num.slice(2,7)+' '+num.slice(7);
-      return num;
-    }
-
-    // determine current mode: if manual toggle is checked -> use flight set
-    // else fallback to navigator.onLine (offline means flight-mode)
-    function updateMode(){
-      const manual = manualToggle.checked;
-      if(manual){
-        statusText.textContent = 'Manual Flight ON';
-        render(flight);
-      } else {
-        if(!navigator.onLine){
-          statusText.textContent = 'Offline (Flight detected)';
-          render(flight);
-        } else {
-          statusText.textContent = 'Online';
-          render(normal);
-        }
-      }
-    }
-
-    // listen to online/offline events
-    window.addEventListener('online', updateMode);
-    window.addEventListener('offline', updateMode);
-    manualToggle.addEventListener('change', updateMode);
-
-    // initial render
-    updateMode();
-  </script></body>
+</body>
 </html>
