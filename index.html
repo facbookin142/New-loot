@@ -14,17 +14,19 @@
     --primary-gradient: linear-gradient(135deg, #00aaff, #0066ff);
     --secondary-gradient: linear-gradient(135deg, #0ea45d, #0b8a4d);
     --continue-gradient: linear-gradient(135deg, #28a745, #218838);
-    --header-text-color: #2c3e50; /* गहरा रंग */
-    --profit-text-color: var(--green2); /* हरा रंग */
+    --header-text-color: #2c3e50;
+    --profit-text-color: var(--green2);
+    --highlight-bg: linear-gradient(135deg, #f44336, #e53935);
+    --highlight-text: #ffffff;
   }
   *{box-sizing:border-box}
   body{
     margin:0;
     min-height:100vh;
     display:flex;
-    flex-direction: column; /* ताकि हेडर ऊपर रहे */
+    flex-direction: column;
     align-items:center;
-    justify-content:flex-start; /* कंटेंट ऊपर से शुरू हो */
+    justify-content:flex-start;
     background: linear-gradient(135deg,#87cefa 0%, #b0e0e6 100%);
     font-family: 'Poppins', sans-serif;
     padding:20px;
@@ -33,12 +35,12 @@
 
   .header-container {
     text-align: center;
-    margin-bottom: 30px; /* कार्ड से दूरी */
+    margin-bottom: 30px;
   }
 
   .header-title {
     color: var(--header-text-color);
-    font-size: 32px; /* बड़ा फ़ॉन्ट */
+    font-size: 32px;
     font-weight: 700;
     margin-bottom: 8px;
     letter-spacing: 0.5px;
@@ -47,7 +49,7 @@
 
   .header-subtitle {
     color: var(--profit-text-color);
-    font-size: 24px; /* थोड़ा छोटा पर ध्यान खींचने वाला */
+    font-size: 24px;
     font-weight: 600;
     margin-top: 0;
     letter-spacing: 0.3px;
@@ -70,18 +72,25 @@
 
   .title{
     color:var(--blue2);
-    font-size:24px; /* Increased font size */
+    font-size:24px;
     font-weight:700;
     margin:0 0 6px 0;
     text-shadow: 0 0 8px rgba(0,102,204,0.1);
-    letter-spacing:0.2px; /* Added letter spacing */
+    letter-spacing:0.2px;
   }
-  .subtitle{
-    color:#556677; /* Softer subtitle color */
-    font-size:14px;
-    margin:0 0 14px 0;
-    font-weight: 400; /* Lighter weight for subtitle */
+
+  .highlighted-subtitle {
+    font-size: 16px;
+    font-weight: 600;
+    color: var(--highlight-text);
+    background: var(--highlight-bg);
+    padding: 12px 18px;
+    border-radius: 10px;
+    margin: 10px 0 20px 0;
+    line-height: 1.4;
+    box-shadow: 0 6px 18px rgba(244, 67, 54, 0.2);
   }
+
   .divider{
     height:2px; width:64px; margin:8px auto 18px; border-radius:2px;
     background: linear-gradient(90deg, transparent, var(--blue1), transparent);
@@ -94,11 +103,11 @@
     gap:12px;
     text-decoration:none;
     color:#fff;
-    padding:14px 18px; /* Increased padding */
-    margin:12px 0; /* Increased margin */
-    border-radius:12px; /* Slightly larger border-radius */
+    padding:14px 18px;
+    margin:12px 0;
+    border-radius:12px;
     font-weight:600;
-    font-size:16px; /* Increased font size */
+    font-size:16px;
     box-shadow: 0 6px 18px rgba(0,102,255,0.14);
     transition: transform .16s ease, box-shadow .16s ease, background .2s ease;
     user-select:none;
@@ -115,9 +124,9 @@
 
   .btn .label{display:inline-block}
   .btn .check{
-    width:28px; height:28px; border-radius:50%; /* Larger check icon */
+    width:28px; height:28px; border-radius:50%;
     display:inline-flex; align-items:center; justify-content:center;
-    font-weight:800; font-size:16px; /* Larger font size */
+    font-weight:800; font-size:16px;
     color:transparent; background:rgba(255,255,255,0.08);
     transition: all .28s cubic-bezier(.2,.9,.25,1);
     box-shadow: none;
@@ -148,7 +157,7 @@
     font-size:13px;
     background: linear-gradient(90deg,#ff8a65,#ffb681);
     color:#ffffff;
-    padding:12px 14px; /* Increased padding */
+    padding:12px 14px;
     border-radius:10px;
     box-shadow: 0 8px 26px rgba(255,140,101,0.12);
     line-height:1.4;
@@ -167,17 +176,18 @@
     .header-title { font-size: 28px; }
     .header-subtitle { font-size: 20px; }
     .header-container { margin-bottom: 20px; }
+    .highlighted-subtitle { font-size: 14px; }
   }
 </style>
 </head>
 <body>
   <div class="header-container">
-    <h1 class="header-title">Youtube UPI 150₹ Agents</h1>
+    <h1 class="header-title">Money Transfer Agents</h1>
     <p class="header-subtitle">1000₹ Profite</p>
   </div>
   <main class="card" role="main" aria-labelledby="title">
     <h1 id="title" class="title">👇 Join Our Community First — After joining, Click Continue 👇</h1>
-    <p class="subtitle">Tap each button to open Telegram. When you return to this page, the button will show a checkmark ✅.</p>
+    <p class="highlighted-subtitle">Join All Telegram Channel First Then Click Continue Then You Will Get Agents Numbers</p>
     <div class="divider" aria-hidden="true"></div>
 
     <a id="btn1" class="btn primary" href="https://t.me/+3t2rF83CNHI1OWRl" target="_blank" rel="noopener noreferrer" data-key="joined1" aria-label="Join Telegram Channel 1">
@@ -185,18 +195,23 @@
       <span class="check" aria-hidden="true">✓</span>
     </a>
 
-    <a id="btn2" class="btn primary" href="https://t.me/+mwKUsKcpTws4MzA9" target="_blank" rel="noopener noreferrer" data-key="joined2" aria-label="Join Telegram Channel 2">
+    <a id="btn2" class="btn primary" href="https://t.me/+9SjQyYa8xGljYWFl" target="_blank" rel="noopener noreferrer" data-key="joined2" aria-label="Join Telegram Channel 2">
       <span class="label">Join Telegram Channel 2</span>
       <span class="check" aria-hidden="true">✓</span>
     </a>
 
-    <a id="btn3" class="btn primary" href="https://t.me/+hz9qkITG-sJmODJl" target="_blank" rel="noopener noreferrer" data-key="joined3" aria-label="Join Telegram Channel 3">
+    <a id="btn3" class="btn primary" href="https://t.me/+95fg7ThpOEQ2ZWY1" target="_blank" rel="noopener noreferrer" data-key="joined3" aria-label="Join Telegram Channel 3">
       <span class="label">Join Telegram Channel 3</span>
       <span class="check" aria-hidden="true">✓</span>
     </a>
 
-    <a id="btn4" class="btn primary" href="https://t.me/+95fg7ThpOEQ2ZWY1" target="_blank" rel="noopener noreferrer" data-key="joined4" aria-label="Join Telegram Channel 4">
+    <a id="btn4" class="btn primary" href="https://t.me/+p5IO1C07hK43MmQ1" target="_blank" rel="noopener noreferrer" data-key="joined4" aria-label="Join Telegram Channel 4">
       <span class="label">Join Telegram Channel 4</span>
+      <span class="check" aria-hidden="true">✓</span>
+    </a>
+
+    <a id="btn5" class="btn primary" href="https://t.me/+YubGRUKOxr9kZWJl" target="_blank" rel="noopener noreferrer" data-key="joined5" aria-label="Join Telegram Channel 5">
+      <span class="label">Join Telegram Channel 5</span>
       <span class="check" aria-hidden="true">✓</span>
     </a>
 
@@ -223,10 +238,12 @@
   const KEY2 = 'joined2';
   const KEY3 = 'joined3';
   const KEY4 = 'joined4';
+  const KEY5 = 'joined5';
   const btn1 = document.getElementById('btn1');
   const btn2 = document.getElementById('btn2');
   const btn3 = document.getElementById('btn3');
   const btn4 = document.getElementById('btn4');
+  const btn5 = document.getElementById('btn5');
   const continueBtn = document.getElementById('continueBtn');
 
   // Helper: mark as joined in UI
@@ -244,10 +261,12 @@
     const a2 = localStorage.getItem(KEY2) === '1';
     const a3 = localStorage.getItem(KEY3) === '1';
     const a4 = localStorage.getItem(KEY4) === '1';
+    const a5 = localStorage.getItem(KEY5) === '1';
     if(a1) setJoinedUI(btn1);
     if(a2) setJoinedUI(btn2);
     if(a3) setJoinedUI(btn3);
     if(a4) setJoinedUI(btn4);
+    if(a5) setJoinedUI(btn5);
   }
 
   // On click: set storage BEFORE leaving the page to open Telegram
@@ -264,6 +283,7 @@
   attachClickMark(btn2, KEY2);
   attachClickMark(btn3, KEY3);
   attachClickMark(btn4, KEY4);
+  attachClickMark(btn5, KEY5);
 
   // New logic for the Continue button
   continueBtn.addEventListener('click', function(event){
@@ -274,8 +294,9 @@
     const a2 = localStorage.getItem(KEY2) === '1';
     const a3 = localStorage.getItem(KEY3) === '1';
     const a4 = localStorage.getItem(KEY4) === '1';
+    const a5 = localStorage.getItem(KEY5) === '1';
 
-    if(a1 && a2 && a3 && a4){
+    if(a1 && a2 && a3 && a4 && a5){
       // All channels joined, so redirect the user
       window.location.href = continueBtn.href;
     } else {
