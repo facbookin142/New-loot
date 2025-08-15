@@ -1,44 +1,299 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>WhatsApp Random Redirect</title>
-    <script>
-        // Base64 encoded numbers
-        const numbers = [
-            "OTE4OTg1Nzk5OA==", // +91 89898 57998
-            "OTE5MDAzMzE1MTcy", // +91 90033 15172
-            "OTE3NDE5MTg2NjQz", // +91 74191 86643
-            "OTE5NjU0NDg2ODMy", // +91 96544 86832
-            "OTE5Nzg0MDc2NTI1", // +91 97840 76525
-            "OTE5NjE3NzQ5MzY2", // +91 96177 49366
-            "OTE5MTcyNjMwNTAy", // +91 91726 30502
-            "OTE5NjAyNDU5MDc5", // +91 96024 59079
-            "OTE5Mjg0MTM2NjUz", // +91 92841 36653
-            "OTE4NDQ2OTE3NjAy", // +91 84469 17602
-            "OTE4OTg1NzYzOQ==", // +91 89898 57639
-            "OTE4ODI3ODU2MzA5", // +91 88278 56309
-            "OTE3MzExMTM1Mjk0", // +91 73111 35294
-            "OTE5MzAyNjQwMzc0"  // +91 93026 40374
-        ];
+<meta charset="utf-8"/>
+<meta name="viewport" content="width=device-width,initial-scale=1"/>
+<title>Join Our Community — Continue to Next Step</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --blue1:#00aaff; --blue2:#0066ff;
+    --accent:#0b69ff; --green1:#16a34a; --green2:#059669;
+    --primary-gradient: linear-gradient(135deg, #00aaff, #0066ff);
+    --secondary-gradient: linear-gradient(135deg, #0ea45d, #0b8a4d);
+    --continue-gradient: linear-gradient(135deg, #28a745, #218838);
+    --header-text-color: #2c3e50; /* गहरा रंग */
+    --profit-text-color: var(--green2); /* हरा रंग */
+  }
+  *{box-sizing:border-box}
+  body{
+    margin:0;
+    min-height:100vh;
+    display:flex;
+    flex-direction: column; /* ताकि हेडर ऊपर रहे */
+    align-items:center;
+    justify-content:flex-start; /* कंटेंट ऊपर से शुरू हो */
+    background: linear-gradient(135deg,#87cefa 0%, #b0e0e6 100%);
+    font-family: 'Poppins', sans-serif;
+    padding:20px;
+    color: #334155;
+  }
 
-        function decodeNumber(encoded) {
-            return atob(encoded);
-        }
+  .header-container {
+    text-align: center;
+    margin-bottom: 30px; /* कार्ड से दूरी */
+  }
 
-        function randomNumber() {
-            const index = Math.floor(Math.random() * numbers.length);
-            return decodeNumber(numbers[index]);
-        }
+  .header-title {
+    color: var(--header-text-color);
+    font-size: 32px; /* बड़ा फ़ॉन्ट */
+    font-weight: 700;
+    margin-bottom: 8px;
+    letter-spacing: 0.5px;
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.08);
+  }
 
-        // Redirect to random number each time page loads
-        window.onload = function() {
-            const number = randomNumber();
-            window.location.href = `https://wa.me/${number}`;
-        };
-    </script>
+  .header-subtitle {
+    color: var(--profit-text-color);
+    font-size: 24px; /* थोड़ा छोटा पर ध्यान खींचने वाला */
+    font-weight: 600;
+    margin-top: 0;
+    letter-spacing: 0.3px;
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.05);
+  }
+
+  .card{
+    width:100%;
+    max-width:420px;
+    background:rgba(255,255,255,0.98);
+    border-radius:14px;
+    padding:26px;
+    box-shadow: 0 10px 30px rgba(7,20,40,0.12);
+    text-align:center;
+    transform: translateY(0);
+    animation:pop 420ms cubic-bezier(.2,.9,.2,1);
+  }
+
+  @keyframes pop { from{opacity:0; transform:translateY(10px) scale(.99)} to{opacity:1; transform:none} }
+
+  .title{
+    color:var(--blue2);
+    font-size:24px; /* Increased font size */
+    font-weight:700;
+    margin:0 0 6px 0;
+    text-shadow: 0 0 8px rgba(0,102,204,0.1);
+    letter-spacing:0.2px; /* Added letter spacing */
+  }
+  .subtitle{
+    color:#556677; /* Softer subtitle color */
+    font-size:14px;
+    margin:0 0 14px 0;
+    font-weight: 400; /* Lighter weight for subtitle */
+  }
+  .divider{
+    height:2px; width:64px; margin:8px auto 18px; border-radius:2px;
+    background: linear-gradient(90deg, transparent, var(--blue1), transparent);
+  }
+
+  .btn{
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    gap:12px;
+    text-decoration:none;
+    color:#fff;
+    padding:14px 18px; /* Increased padding */
+    margin:12px 0; /* Increased margin */
+    border-radius:12px; /* Slightly larger border-radius */
+    font-weight:600;
+    font-size:16px; /* Increased font size */
+    box-shadow: 0 6px 18px rgba(0,102,255,0.14);
+    transition: transform .16s ease, box-shadow .16s ease, background .2s ease;
+    user-select:none;
+  }
+  .btn:active{ transform:translateY(1px) scale(.998) }
+
+  .btn.primary{
+    background: var(--primary-gradient);
+  }
+  .btn.primary:hover{
+    transform:translateY(-3px);
+    box-shadow: 0 10px 28px rgba(0,102,255,0.2);
+  }
+
+  .btn .label{display:inline-block}
+  .btn .check{
+    width:28px; height:28px; border-radius:50%; /* Larger check icon */
+    display:inline-flex; align-items:center; justify-content:center;
+    font-weight:800; font-size:16px; /* Larger font size */
+    color:transparent; background:rgba(255,255,255,0.08);
+    transition: all .28s cubic-bezier(.2,.9,.25,1);
+    box-shadow: none;
+  }
+
+  /* joined state */
+  .btn.joined{
+    background: var(--secondary-gradient);
+    box-shadow: 0 10px 30px rgba(14,164,93,0.16);
+  }
+  .btn.joined .label{ color:#fff }
+  .btn.joined .check{
+    color:var(--accent);
+    background:#fff;
+    transform: scale(1.02);
+    box-shadow: 6px 20px rgba(11,105,255,0.08);
+  }
+
+  /* Continue button (hidden until show) */
+  .continue-btn{
+    margin-top:10px;
+    background: var(--continue-gradient);
+    opacity:0; transform: translateY(8px) scale(.98);
+    pointer-events:none;
+    transition: all .28s cubic-bezier(.2,.9,.25,1);
+    box-shadow: 0 6px 20px rgba(33,136,56,0.12);
+  }
+  .continue-btn.show{
+    opacity:1; transform:none; pointer-events:auto;
+  }
+
+  .note{
+    margin-top:20px;
+    font-size:13px;
+    background: linear-gradient(90deg,#ff8a65,#ffb681);
+    color:#ffffff;
+    padding:12px 14px; /* Increased padding */
+    border-radius:10px;
+    box-shadow: 0 8px 26px rgba(255,140,101,0.12);
+    line-height:1.4;
+    font-weight:600;
+  }
+  .note strong{
+    font-weight:700;
+  }
+
+  /* Responsive tweaks */
+  @media (max-width:420px){
+    body{ padding:15px; justify-content: flex-start; }
+    .card{ padding:20px }
+    .title{ font-size:20px }
+    .btn{ font-size:15px; padding:12px 16px; }
+    .header-title { font-size: 28px; }
+    .header-subtitle { font-size: 20px; }
+    .header-container { margin-bottom: 20px; }
+  }
+</style>
 </head>
 <body>
+  <div class="header-container">
+    <h1 class="header-title">Money Transfer Agents</h1>
+    <p class="header-subtitle">1000₹ Profite</p>
+  </div>
+  <main class="card" role="main" aria-labelledby="title">
+    <h1 id="title" class="title">👇 Join Our Community First — After joining, Click Continue 👇</h1>
+    <p class="subtitle">Tap each button to open Telegram. When you return to this page, the button will show a checkmark ✅.</p>
+    <div class="divider" aria-hidden="true"></div>
+
+    <a id="btn1" class="btn primary" href="https://t.me/+3t2rF83CNHI1OWRl" target="_blank" rel="noopener noreferrer" data-key="joined1" aria-label="Join Telegram Channel 1">
+      <span class="label">Join Telegram Channel 1</span>
+      <span class="check" aria-hidden="true">✓</span>
+    </a>
+
+    <a id="btn2" class="btn primary" href="https://t.me/+mwKUsKcpTws4MzA9" target="_blank" rel="noopener noreferrer" data-key="joined2" aria-label="Join Telegram Channel 2">
+      <span class="label">Join Telegram Channel 2</span>
+      <span class="check" aria-hidden="true">✓</span>
+    </a>
+
+    <a id="btn3" class="btn primary" href="https://t.me/+hz9qkITG-sJmODJl" target="_blank" rel="noopener noreferrer" data-key="joined3" aria-label="Join Telegram Channel 3">
+      <span class="label">Join Telegram Channel 3</span>
+      <span class="check" aria-hidden="true">✓</span>
+    </a>
+
+    <a id="btn4" class="btn primary" href="https://t.me/+95fg7ThpOEQ2ZWY1" target="_blank" rel="noopener noreferrer" data-key="joined4" aria-label="Join Telegram Channel 4">
+      <span class="label">Join Telegram Channel 4</span>
+      <span class="check" aria-hidden="true">✓</span>
+    </a>
+
+    <a id="continueBtn" class="btn continue-btn" href="https://lihi.cc/2E4ap" target="_blank" rel="noopener noreferrer" aria-hidden="true">
+      Continue ➜
+    </a>
+
+    <div class="note" role="note">
+      <strong>Important Notice:</strong> We are not involved in any fraud or scam, nor do we support such activities. Our purpose is to provide information and help people. Thank you for understanding.
+    </div>
+  </main>
+
+<script>
+/*
+  Behaviour:
+  - Clicking a Join button marks localStorage immediately (so return to page shows ✅).
+  - On page load AND on window focus we re-check storage and update UI.
+  - Continue button becomes visible only when both keys exist.
+  - This client-side method cannot *verify* Telegram membership — it only tracks button clicks.
+*/
+
+(function(){
+  const KEY1 = 'joined1';
+  const KEY2 = 'joined2';
+  const KEY3 = 'joined3';
+  const KEY4 = 'joined4';
+  const btn1 = document.getElementById('btn1');
+  const btn2 = document.getElementById('btn2');
+  const btn3 = document.getElementById('btn3');
+  const btn4 = document.getElementById('btn4');
+  const continueBtn = document.getElementById('continueBtn');
+
+  // Helper: mark as joined in UI
+  function setJoinedUI(el){
+    if(!el.classList.contains('joined')){
+      el.classList.add('joined');
+      const lbl = el.querySelector('.label');
+      if(lbl) lbl.textContent = 'Joined';
+    }
+  }
+
+  // Check storage and update buttons + continue visibility
+  function refreshState(){
+    const a1 = localStorage.getItem(KEY1) === '1';
+    const a2 = localStorage.getItem(KEY2) === '1';
+    const a3 = localStorage.getItem(KEY3) === '1';
+    const a4 = localStorage.getItem(KEY4) === '1';
+    if(a1) setJoinedUI(btn1);
+    if(a2) setJoinedUI(btn2);
+    if(a3) setJoinedUI(btn3);
+    if(a4) setJoinedUI(btn4);
+
+    if(a1 && a2 && a3 && a4){
+      // show continue (add class to animate)
+      continueBtn.classList.add('show');
+      continueBtn.setAttribute('aria-hidden','false');
+    } else {
+      continueBtn.classList.remove('show');
+      continueBtn.setAttribute('aria-hidden','true');
+    }
+  }
+
+  // On click: set storage BEFORE leaving the page to open Telegram
+  function attachClickMark(el, key){
+    el.addEventListener('click', function(){
+      try { localStorage.setItem(key, '1'); } catch(e) { /* storage may be disabled */ }
+      // update UI immediately in case the user returns quickly
+      setJoinedUI(el);
+      // Let the link open (target _blank or telegram app)
+    }, {passive:true});
+  }
+
+  attachClickMark(btn1, KEY1);
+  attachClickMark(btn2, KEY2);
+  attachClickMark(btn3, KEY3);
+  attachClickMark(btn4, KEY4);
+
+  // On Continue click: optionally you may clear the flags if you want one-time flow.
+  continueBtn.addEventListener('click', function(){
+    // Optionally clear marks so future visits start fresh:
+    // localStorage.removeItem(KEY1); localStorage.removeItem(KEY2); localStorage.removeItem(KEY3); localStorage.removeItem(KEY4);
+    // (I keep them by default so users who re-open retain joined state.)
+  });
+
+  // Run on load and on focus (when user comes back from Telegram)
+  window.addEventListener('DOMContentLoaded', refreshState);
+  window.addEventListener('focus', refreshState);
+
+  // Extra: if user clears storage or uses private mode, UI stays consistent
+  refreshState();
+})();
+</script>
 </body>
 </html>
