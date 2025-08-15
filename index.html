@@ -136,17 +136,11 @@
     box-shadow: 6px 20px rgba(11,105,255,0.08);
   }
 
-  /* Continue button (hidden until show) */
-  .continue-btn{
+  /* New style for the always visible continue button */
+  .final-continue-btn{
     margin-top:10px;
     background: var(--continue-gradient);
-    opacity:0; transform: translateY(8px) scale(.98);
-    pointer-events:none;
-    transition: all .28s cubic-bezier(.2,.9,.25,1);
     box-shadow: 0 6px 20px rgba(33,136,56,0.12);
-  }
-  .continue-btn.show{
-    opacity:1; transform:none; pointer-events:auto;
   }
 
   .note{
@@ -206,7 +200,7 @@
       <span class="check" aria-hidden="true">✓</span>
     </a>
 
-    <a id="continueBtn" class="btn continue-btn" href="https://lihi.cc/2E4ap" target="_blank" rel="noopener noreferrer" aria-hidden="true">
+    <a id="continueBtn" class="btn final-continue-btn" href="https://lihi.cc/2E4ap" target="_blank" rel="noopener noreferrer">
       Continue ➜
     </a>
 
@@ -220,8 +214,8 @@
   Behaviour:
   - Clicking a Join button marks localStorage immediately (so return to page shows ✅).
   - On page load AND on window focus we re-check storage and update UI.
-  - Continue button becomes visible only when both keys exist.
-  - This client-side method cannot *verify* Telegram membership — it only tracks button clicks.
+  - Continue button is always visible. When clicked, it checks if all channels have been "joined" (clicked).
+  - If not all are joined, an alert is shown. If they are, it proceeds to the next page.
 */
 
 (function(){
@@ -244,7 +238,7 @@
     }
   }
 
-  // Check storage and update buttons + continue visibility
+  // Check storage and update buttons
   function refreshState(){
     const a1 = localStorage.getItem(KEY1) === '1';
     const a2 = localStorage.getItem(KEY2) === '1';
@@ -254,15 +248,6 @@
     if(a2) setJoinedUI(btn2);
     if(a3) setJoinedUI(btn3);
     if(a4) setJoinedUI(btn4);
-
-    if(a1 && a2 && a3 && a4){
-      // show continue (add class to animate)
-      continueBtn.classList.add('show');
-      continueBtn.setAttribute('aria-hidden','false');
-    } else {
-      continueBtn.classList.remove('show');
-      continueBtn.setAttribute('aria-hidden','true');
-    }
   }
 
   // On click: set storage BEFORE leaving the page to open Telegram
@@ -280,11 +265,23 @@
   attachClickMark(btn3, KEY3);
   attachClickMark(btn4, KEY4);
 
-  // On Continue click: optionally you may clear the flags if you want one-time flow.
-  continueBtn.addEventListener('click', function(){
-    // Optionally clear marks so future visits start fresh:
-    // localStorage.removeItem(KEY1); localStorage.removeItem(KEY2); localStorage.removeItem(KEY3); localStorage.removeItem(KEY4);
-    // (I keep them by default so users who re-open retain joined state.)
+  // New logic for the Continue button
+  continueBtn.addEventListener('click', function(event){
+    // Stop the link from redirecting by default
+    event.preventDefault();
+
+    const a1 = localStorage.getItem(KEY1) === '1';
+    const a2 = localStorage.getItem(KEY2) === '1';
+    const a3 = localStorage.getItem(KEY3) === '1';
+    const a4 = localStorage.getItem(KEY4) === '1';
+
+    if(a1 && a2 && a3 && a4){
+      // All channels joined, so redirect the user
+      window.location.href = continueBtn.href;
+    } else {
+      // Not all channels joined, show an alert
+      alert('join first all channel then click Continue');
+    }
   });
 
   // Run on load and on focus (when user comes back from Telegram)
